@@ -1,0 +1,86 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage
+    xmlns="http://xamarin.com/schemas/2014/forms"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:d="http://xamarin.com/schemas/2014/forms/design"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    mc:Ignorable="d"
+    x:Class="VisitNow.Views.AuthPage"
+    xmlns:viewt="clr-namespace:VisitNow.ViewTemplates"
+    xmlns:ccontrol="clr-namespace:VisitNow.CustomControl"
+    Title="{Binding Title}">
+    <ContentPage.Content>
+        <RelativeLayout
+            VerticalOptions="FillAndExpand"
+            HorizontalOptions="FillAndExpand">
+            <ScrollView
+                RelativeLayout.WidthConstraint="{ConstraintExpression Type=RelativeToParent, Property=Width, Factor=1, Constant=0}"
+		        RelativeLayout.HeightConstraint="{ConstraintExpression Type=RelativeToParent, Property=Height, Factor=1, Constant=0}">
+                <StackLayout
+                    Padding="10"
+                    HorizontalOptions="FillAndExpand"
+                    VerticalOptions="FillAndExpand">
+                    <Frame
+                        VerticalOptions="FillAndExpand"
+                        BorderColor="LightGray"
+                        HasShadow="False">
+                        <StackLayout>
+                            <Image
+                                VerticalOptions="CenterAndExpand"
+                                Source="logo"/>
+                            <StackLayout
+                                Spacing="10"
+                                VerticalOptions="End">
+                                <StackLayout>
+                                    <Label
+                                        FontSize="Small"
+                                        Text="Usuário"/>
+                                    <ccontrol:CustomEntry Placeholder="Digite o usuário"/>
+                                </StackLayout>
+                                <StackLayout>
+                                    <Label
+                                        FontSize="Small"
+                                        Text="Senha"/>
+                                    <ccontrol:CustomEntry
+                                        Placeholder="Digite a senha"
+                                        IsPassword="True"/>
+                                </StackLayout>
+                            </StackLayout>   
+                            <StackLayout
+                                Margin="0,15,0,0"
+                                VerticalOptions="End">
+                                <Label
+                                    FontSize="Small"
+                                    Text="Ainda não tem uma conta?"/>
+                                <Label
+                                    FontSize="Small"
+                                    TextColor="Blue"
+                                    FontAttributes="Bold"
+                                    Text="Crie uma conta">
+                                    <Label.GestureRecognizers>
+                                        <TapGestureRecognizer
+                                            Command="{Binding RegisterCommand}"
+                                            NumberOfTapsRequired="1"/>
+                                    </Label.GestureRecognizers>
+                                </Label>
+                            </StackLayout>
+                        </StackLayout>
+                    </Frame>
+                    <Button
+                        Command="{Binding LoginCommand}"
+                        Margin="0,10,0,0"
+                        VerticalOptions="End"
+                        Text="Entrar"
+                        TextColor="White"
+                        BackgroundColor="{StaticResource colorAccent}"/>
+                </StackLayout>
+            </ScrollView>
+            <viewt:LoadingView
+		        IsVisible="{Binding IsBusy}"
+		        RelativeLayout.WidthConstraint="{ConstraintExpression Type=RelativeToParent, Property=Width, Factor=1, Constant=0}"
+		        RelativeLayout.HeightConstraint="{ConstraintExpression Type=RelativeToParent, Property=Height, Factor=1, Constant=0}"
+		        VerticalOptions="FillAndExpand"
+		        HorizontalOptions="FillAndExpand"/>
+        </RelativeLayout>
+    </ContentPage.Content>
+</ContentPage>

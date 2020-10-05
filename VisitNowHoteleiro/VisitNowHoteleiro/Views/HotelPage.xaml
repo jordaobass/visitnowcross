@@ -1,0 +1,114 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage
+    xmlns="http://xamarin.com/schemas/2014/forms"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:d="http://xamarin.com/schemas/2014/forms/design"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    mc:Ignorable="d"
+    x:Class="VisitNowHoteleiro.Views.HotelPage"
+    xmlns:viewt="clr-namespace:VisitNowHoteleiro.ViewTemplates"
+    xmlns:ccontrol="clr-namespace:VisitNowHoteleiro.CustomControl">
+
+    <NavigationPage.TitleView>
+        <StackLayout
+            Orientation="Horizontal"
+            Spacing="0">
+            <Label
+                VerticalOptions="Center"
+                Text="{Binding Title}"
+                TextColor="White"
+                FontAttributes="Bold"
+                FontSize="Medium" />
+            <Button
+                WidthRequest="45"
+                HorizontalOptions="EndAndExpand"
+                Text="&#xf0fe;"
+                FontSize="Medium"
+                BackgroundColor="Transparent"
+                TextColor="White"
+                Clicked="AddItems_Clicked">
+                <Button.FontFamily>
+                    <OnPlatform
+                        x:TypeArguments="x:String"
+                        Android="fa-solid-900.ttf#Font Awesome 5 Free Solid" 
+                        iOS="Font Awesome 5 Free"/>
+                </Button.FontFamily>
+            </Button>
+        </StackLayout>
+    </NavigationPage.TitleView>
+
+    <ContentPage.Content>
+        <RelativeLayout
+            VerticalOptions="FillAndExpand"
+            HorizontalOptions="FillAndExpand">
+            <StackLayout
+                Padding="10"
+                RelativeLayout.WidthConstraint="{ConstraintExpression Type=RelativeToParent, Property=Width, Factor=1, Constant=0}"
+		        RelativeLayout.HeightConstraint="{ConstraintExpression Type=RelativeToParent, Property=Height, Factor=1, Constant=0}">
+                <ListView
+                    x:Name="HotelsListView"
+                    ItemsSource="{Binding Hotels}"
+                    VerticalOptions="FillAndExpand"
+                    HasUnevenRows="true"
+                    RefreshCommand="{Binding LoadHotelsCommand}"
+                    IsPullToRefreshEnabled="true"
+                    IsRefreshing="{Binding IsBusy, Mode=OneWay}"
+                    CachingStrategy="RecycleElement"
+                    ItemSelected="OnItemSelected">
+                    <ListView.ItemTemplate>
+                        <DataTemplate>
+                            <ViewCell>
+                                <StackLayout Padding="0,8,0,8">
+                                    <Frame
+                                        Padding="10"
+                                        BorderColor="LightGray"
+                                        HasShadow="False">
+                                        <StackLayout
+                                            Spacing="20"
+                                            Orientation="Horizontal">
+                                            <Label
+                                                Margin="8,0,0,0"
+                                                HorizontalOptions="End"
+                                                VerticalOptions="Center"
+                                                Text="&#xf1ad;"
+                                                FontSize="Large"
+                                                TextColor="SteelBlue">
+                                                <Label.FontFamily>
+                                                    <OnPlatform
+                                                        x:TypeArguments="x:String"
+                                                        Android="fa-solid-900.ttf#Font Awesome 5 Free Solid" 
+                                                        iOS="Font Awesome 5 Free"/>
+                                                </Label.FontFamily>
+                                            </Label>
+                                            <StackLayout Spacing="2">
+                                                <Label
+                                                    HorizontalOptions="StartAndExpand"
+                                                    VerticalOptions="Center"
+                                                    Text="{Binding Cnpj}">
+                                                    <Label.Behaviors>
+                                                        <ccontrol:MaskedLabelBehavior Mask="XX.XXX.XXX/XXXX-XX"/>
+                                                    </Label.Behaviors>
+                                                </Label>
+                                                <Label
+                                                    HorizontalOptions="StartAndExpand"
+                                                    VerticalOptions="Center"
+                                                    Text="{Binding PropertyName}"/>
+                                            </StackLayout>
+                                        </StackLayout>
+                                    </Frame>
+                                </StackLayout>
+                            </ViewCell>
+                        </DataTemplate>
+                    </ListView.ItemTemplate>
+                </ListView>
+            </StackLayout>
+            <viewt:LoadingView
+		        IsVisible="False"
+		        RelativeLayout.WidthConstraint="{ConstraintExpression Type=RelativeToParent, Property=Width, Factor=1, Constant=0}"
+		        RelativeLayout.HeightConstraint="{ConstraintExpression Type=RelativeToParent, Property=Height, Factor=1, Constant=0}"
+		        VerticalOptions="FillAndExpand"
+		        HorizontalOptions="FillAndExpand"/>
+        </RelativeLayout>
+    </ContentPage.Content>
+    
+</ContentPage>

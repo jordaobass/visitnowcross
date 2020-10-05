@@ -1,0 +1,231 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage
+    xmlns="http://xamarin.com/schemas/2014/forms"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:d="http://xamarin.com/schemas/2014/forms/design"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    mc:Ignorable="d"
+    xmlns:viewt="clr-namespace:VisitNow.ViewTemplates"
+    xmlns:ccontrol="clr-namespace:VisitNow.CustomControl"
+    x:Class="VisitNow.Views.VoucherPage"
+    Title="{Binding Title}">
+    <ContentPage.Content>
+        <RelativeLayout
+            VerticalOptions="FillAndExpand"
+            HorizontalOptions="FillAndExpand">
+            <ScrollView
+                RelativeLayout.WidthConstraint="{ConstraintExpression Type=RelativeToParent, Property=Width, Factor=1, Constant=0}"
+		        RelativeLayout.HeightConstraint="{ConstraintExpression Type=RelativeToParent, Property=Height, Factor=1, Constant=0}">
+                <StackLayout>
+                    <CarouselView
+                        ItemsSource="{Binding Item.Images}"
+                        HeightRequest="250">
+                        <CarouselView.ItemTemplate>
+                            <DataTemplate>
+                                <Frame
+                                    Padding="0"
+                                    BackgroundColor="SlateGray"
+                                    BorderColor="LightGray"
+                                    HasShadow="False">
+                                    <RelativeLayout>
+                                        <Image
+                                            RelativeLayout.WidthConstraint="{ConstraintExpression Type=RelativeToParent,Property=Width,Factor=1,Constant=0}"
+                                            RelativeLayout.HeightConstraint="{ConstraintExpression Type=RelativeToParent,Property=Height,Factor=1,Constant=0}"
+                                            Source="no_image"
+                                            Aspect="AspectFill"/>
+                                        <Image
+                                            RelativeLayout.WidthConstraint="{ConstraintExpression Type=RelativeToParent,Property=Width,Factor=1,Constant=0}"
+                                            RelativeLayout.HeightConstraint="{ConstraintExpression Type=RelativeToParent,Property=Height,Factor=1,Constant=0}"
+                                            Source="{Binding .}"
+                                            Aspect="AspectFill"/>
+                                        <StackLayout
+                                            RelativeLayout.XConstraint="{ConstraintExpression Type=RelativeToParent,Property=Width,Factor=1,Constant=-50}" 
+                                            RelativeLayout.YConstraint="{ConstraintExpression Type=RelativeToParent,Property=Height,Factor=1,Constant=-50}">
+                                            <Label
+                                                Text="&#xf337;"
+                                                FontSize="Large"
+                                                TextColor="White"
+                                                Margin="-6,0,0,0">
+                                                <Label.FontFamily>
+                                                    <OnPlatform
+                                                        x:TypeArguments="x:String"
+                                                        Android="fa-solid-900.ttf#Font Awesome 5 Free Solid" 
+                                                        iOS="Font Awesome 5 Free"/>
+                                                </Label.FontFamily>
+                                            </Label>
+                                            <Label
+                                                Text="&#xf0a6;"
+                                                FontSize="Large"
+                                                TextColor="White"
+                                                Margin="0,-12,0,0">
+                                                <Label.FontFamily>
+                                                    <OnPlatform
+                                                    x:TypeArguments="x:String"
+                                                    Android="fa-solid-900.ttf#Font Awesome 5 Free Solid" 
+                                                    iOS="Font Awesome 5 Free"/>
+                                                </Label.FontFamily>
+                                            </Label>
+                                        </StackLayout>
+                                    </RelativeLayout>
+                                </Frame>
+                            </DataTemplate>
+                        </CarouselView.ItemTemplate>
+                    </CarouselView>
+                    <StackLayout
+                        Spacing="10"
+                        Padding="10">
+                        <StackLayout Spacing="20">
+                            <StackLayout>
+                                <Label
+                                    Text="{Binding Item.Name}"
+                                    LineBreakMode="NoWrap" 
+                                    FontSize="Medium"
+                                    FontAttributes="Bold"/>
+                                <Label
+                                    Text="{Binding Item.Text}"
+                                    LineBreakMode="NoWrap" 
+                                    FontSize="Medium"/>
+                                <Label
+                                    Text="{Binding Item.Location}" 
+                                    LineBreakMode="NoWrap" 
+                                    FontSize="Small" />
+                                <Label
+                                    LineBreakMode="NoWrap"
+                                    Text="{Binding Item.Value}"
+                                    FontSize="Medium"
+                                    TextColor="SteelBlue"/>
+                                <StackLayout
+                                    Margin="0,10,0,0"
+                                    HorizontalOptions="FillAndExpand"
+                                    Orientation="Horizontal">
+                                    <viewt:StarsView Rate="{Binding Item.Rate}"/>
+                                    <Label
+                                        HorizontalOptions="EndAndExpand"
+                                        LineBreakMode="NoWrap" 
+                                        FontSize="Small">
+                                        <Label.FormattedText>
+                                            <FormattedString>
+                                                <FormattedString.Spans>
+                                                    <Span Text="{Binding Item.UserRate}" />
+                                                    <Span Text="%" />
+                                                </FormattedString.Spans>
+                                            </FormattedString>
+                                        </Label.FormattedText>
+                                    </Label>
+                                    <Label
+                                        HorizontalOptions="End"
+                                        VerticalOptions="Center"
+                                        Text="&#xf164;"
+                                        FontSize="Medium"
+                                        TextColor="SteelBlue">
+                                        <Label.FontFamily>
+                                            <OnPlatform
+                                                x:TypeArguments="x:String"
+                                                Android="fa-solid-900.ttf#Font Awesome 5 Free Solid" 
+                                                iOS="Font Awesome 5 Free"/>
+                                        </Label.FontFamily>
+                                    </Label>
+                                </StackLayout>
+                            </StackLayout>
+                            <Grid RowSpacing="20">
+                                <Grid.RowDefinitions>
+                                    <RowDefinition Height="*" />
+                                </Grid.RowDefinitions>
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="*" />
+                                    <ColumnDefinition Width="*" />
+                                </Grid.ColumnDefinitions>
+                                <StackLayout
+                                    Grid.Row="0"
+                                    Grid.Column="0"
+                                    Orientation="Vertical">
+                                    <Label
+                                        Text="Entrada"
+                                        FontSize="Small"
+                                        FontAttributes="Bold"/>
+                                    <ccontrol:CustomDatePicker
+                                        Date="{Binding Item.CheckIn}"
+                                        IsEnabled="False">
+                                        <ccontrol:CustomDatePicker.Format>dd/MM/yyyy</ccontrol:CustomDatePicker.Format>
+                                    </ccontrol:CustomDatePicker>
+                                    <ccontrol:CustomTimePicker
+                                        Time="{Binding Item.CheckInTime}"
+                                        IsEnabled="False">
+                                        <ccontrol:CustomTimePicker.Format>HH:mm:ss</ccontrol:CustomTimePicker.Format>
+                                    </ccontrol:CustomTimePicker>
+                                </StackLayout>
+                                <StackLayout
+                                    Grid.Row="0"
+                                    Grid.Column="1"
+                                    Orientation="Vertical">
+                                    <Label
+                                        Text="Saída"
+                                        FontSize="Small"
+                                        FontAttributes="Bold"/>
+                                    <ccontrol:CustomDatePicker
+                                        Date="{Binding Item.CheckOut}"
+                                        IsEnabled="False">
+                                        <ccontrol:CustomDatePicker.Format>dd/MM/yyyy</ccontrol:CustomDatePicker.Format>
+                                    </ccontrol:CustomDatePicker>
+                                    <ccontrol:CustomTimePicker
+                                        Time="{Binding Item.CheckInTime}"
+                                        IsEnabled="False">
+                                        <ccontrol:CustomTimePicker.Format>HH:mm:ss</ccontrol:CustomTimePicker.Format>
+                                    </ccontrol:CustomTimePicker>
+                                </StackLayout>
+                            </Grid>
+                        </StackLayout>
+                        <StackLayout
+                            Margin="0,10,0,0"
+                            Spacing="10">
+                            <Label
+                                Text="Hóspede(s)"
+                                LineBreakMode="NoWrap" 
+                                FontSize="Medium"/>
+                            <BoxView
+                                BackgroundColor="LightGray"
+                                HeightRequest="1"/>
+                            <StackLayout
+                                x:Name="StackLayoutSectionGuests"
+                                Padding="10"
+                                Spacing="20">
+                            </StackLayout>
+                        </StackLayout>
+                        <StackLayout
+                            Margin="0,10,0,0"
+                            Spacing="10">
+                            <Label
+                                Text="Pagamento"
+                                LineBreakMode="NoWrap" 
+                                FontSize="Medium"/>
+                            <BoxView
+                                BackgroundColor="LightGray"
+                                HeightRequest="1"/>
+                            <StackLayout
+                                x:Name="StackLayoutSectionPayments"
+                                Padding="10"
+                                Spacing="20">
+                            </StackLayout>
+                        </StackLayout>
+                        <Label
+                            Margin="0,10,0,0"
+                            Text="Localização"
+                            FontSize="Medium" />
+                        <Frame
+                            Padding="1"
+                            BorderColor="LightGray"
+                            HasShadow="False">
+                            <Image Source="demo_map"/>
+                        </Frame>
+                    </StackLayout>
+                </StackLayout>
+            </ScrollView>
+            <viewt:LoadingView
+		        IsVisible="{Binding IsBusy}"
+		        RelativeLayout.WidthConstraint="{ConstraintExpression Type=RelativeToParent, Property=Width, Factor=1, Constant=0}"
+		        RelativeLayout.HeightConstraint="{ConstraintExpression Type=RelativeToParent, Property=Height, Factor=1, Constant=0}"
+		        VerticalOptions="FillAndExpand"
+		        HorizontalOptions="FillAndExpand"/>
+        </RelativeLayout>
+    </ContentPage.Content>
+</ContentPage>

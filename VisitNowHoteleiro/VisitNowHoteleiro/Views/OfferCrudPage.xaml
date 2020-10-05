@@ -1,0 +1,392 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage
+    xmlns="http://xamarin.com/schemas/2014/forms"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:d="http://xamarin.com/schemas/2014/forms/design"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    mc:Ignorable="d"
+    x:Class="VisitNowHoteleiro.Views.OfferCrudPage"
+    xmlns:viewt="clr-namespace:VisitNowHoteleiro.ViewTemplates"
+    xmlns:ccontrol="clr-namespace:VisitNowHoteleiro.CustomControl"
+    Title="{Binding Title}">
+    <ContentPage.Content>
+        <RelativeLayout
+            VerticalOptions="FillAndExpand"
+            HorizontalOptions="FillAndExpand">
+            <ScrollView
+                RelativeLayout.WidthConstraint="{ConstraintExpression Type=RelativeToParent, Property=Width, Factor=1, Constant=0}"
+		        RelativeLayout.HeightConstraint="{ConstraintExpression Type=RelativeToParent, Property=Height, Factor=1, Constant=0}">
+                <StackLayout
+                    Padding="10"
+                    Spacing="10">
+                    <StackLayout Padding="5">
+                        <Label
+                            Text="Selecionar fotos"
+                            FontSize="Small"/>
+                        <ScrollView
+                            HorizontalOptions="StartAndExpand"
+                            Orientation="Horizontal">
+                            <StackLayout
+                                Orientation="Horizontal"
+                                HorizontalOptions="StartAndExpand"
+                                Spacing="10">
+                                <Frame
+                                    Padding="1"
+                                    HasShadow="False"
+                                    BorderColor="LightGray"
+                                    BackgroundColor="LightGray">
+                                    <Image
+                                        x:Name="offerImage1"
+                                        WidthRequest="100"
+                                        HeightRequest="100"
+                                        Aspect="AspectFill"
+                                        Source="no_image">
+                                        <Image.GestureRecognizers>
+                                            <TapGestureRecognizer
+                                                NumberOfTapsRequired="1"
+                                                Tapped="OnPickImageClicked"/>
+                                        </Image.GestureRecognizers>
+                                    </Image>
+                                </Frame>
+                                <Frame
+                                    Padding="1"
+                                    HasShadow="False"
+                                    BorderColor="LightGray"
+                                    BackgroundColor="LightGray">
+                                    <Image
+                                        x:Name="offerImage2"
+                                        WidthRequest="100"
+                                        HeightRequest="100"
+                                        Aspect="AspectFill"
+                                        Source="no_image">
+                                        <Image.GestureRecognizers>
+                                            <TapGestureRecognizer
+                                                NumberOfTapsRequired="1"
+                                                Tapped="OnPickImageClicked"/>
+                                        </Image.GestureRecognizers>
+                                    </Image>
+                                </Frame>
+                                <Frame
+                                    Padding="1"
+                                    HasShadow="False"
+                                    BorderColor="LightGray"
+                                    BackgroundColor="LightGray">
+                                    <Image
+                                        x:Name="offerImage3"
+                                        WidthRequest="100"
+                                        HeightRequest="100"
+                                        Aspect="AspectFill"
+                                        Source="no_image">
+                                        <Image.GestureRecognizers>
+                                            <TapGestureRecognizer
+                                                NumberOfTapsRequired="1"
+                                                Tapped="OnPickImageClicked"/>
+                                        </Image.GestureRecognizers>
+                                    </Image>
+                                </Frame>
+                                <Frame
+                                    Padding="1"
+                                    HasShadow="False"
+                                    BorderColor="LightGray"
+                                    BackgroundColor="LightGray">
+                                    <Image
+                                        x:Name="offerImage4"
+                                        WidthRequest="100"
+                                        HeightRequest="100"
+                                        Aspect="AspectFill"
+                                        Source="no_image">
+                                        <Image.GestureRecognizers>
+                                            <TapGestureRecognizer
+                                                NumberOfTapsRequired="1"
+                                                Tapped="OnPickImageClicked"/>
+                                        </Image.GestureRecognizers>
+                                    </Image>
+                                </Frame>
+                                <Frame
+                                    Padding="1"
+                                    HasShadow="False"
+                                    BorderColor="LightGray"
+                                    BackgroundColor="LightGray">
+                                    <Image
+                                        x:Name="offerImage5"
+                                        WidthRequest="100"
+                                        HeightRequest="100"
+                                        Aspect="AspectFill"
+                                        Source="no_image">
+                                        <Image.GestureRecognizers>
+                                            <TapGestureRecognizer
+                                                NumberOfTapsRequired="1"
+                                                Tapped="OnPickImageClicked"/>
+                                        </Image.GestureRecognizers>
+                                    </Image>
+                                </Frame>
+                            </StackLayout>
+                        </ScrollView>
+                    </StackLayout>
+                    <Frame
+                        Margin="0,5,0,0"
+                        BorderColor="LightGray"
+                        HasShadow="False">
+                        <StackLayout Spacing="10">
+                            <StackLayout>
+                                <Label
+                                    FontSize="Small"
+                                    Text="Estabelecimento"/>
+                                <RelativeLayout HorizontalOptions="FillAndExpand">
+                                    <ccontrol:CustomPicker
+                                        RelativeLayout.WidthConstraint="{ConstraintExpression Type=RelativeToParent, Property=Width, Factor=1, Constant=0}"
+                                        Title = "Selecionar estabelecimento"
+                                        HeightRequest="35"
+                                        HorizontalOptions="FillAndExpand"
+                                        x:Name="PickerHotel"/>
+                                    <Label
+                                        RelativeLayout.WidthConstraint="{ConstraintExpression Type=RelativeToParent, Property=Width, Factor=1, Constant=0}"
+                                        Text="&#xf0c9;"
+                                        HorizontalOptions="End"
+                                        Margin="0,10,10,0"
+                                        InputTransparent="True">
+                                        <Label.FontFamily>
+                                            <OnPlatform
+                                                x:TypeArguments="x:String"
+                                                Android="fa-solid-900.ttf#Font Awesome 5 Free Solid" 
+                                                iOS="Font Awesome 5 Free"/>
+                                        </Label.FontFamily>
+                                    </Label>
+                                </RelativeLayout>
+                            </StackLayout>
+                            <StackLayout>
+                                <Label
+                                    FontSize="Small"
+                                    Text="Titulo"/>
+                                <ccontrol:CustomEntry
+                                    Keyboard="Default"
+                                    Placeholder="Digite um titulo para a oferta"/>
+                            </StackLayout>
+                            <StackLayout Orientation="Horizontal">
+                                <StackLayout HorizontalOptions="FillAndExpand">
+                                    <Label
+                                        FontSize="Small"
+                                        Text="Valor"/>
+                                    <ccontrol:CustomEntry
+                                        Keyboard="Numeric"
+                                        Placeholder="Digite o preço"/>
+                                </StackLayout>
+                                <StackLayout HorizontalOptions="End">
+                                    <Label
+                                        FontSize="Small"
+                                        Text="Desconto %"/>
+                                    <ccontrol:CustomEntry
+                                        Keyboard="Numeric"
+                                        Placeholder="Ex.: 10"/>
+                                </StackLayout>
+                            </StackLayout>
+                            <StackLayout >
+                                <Label
+                                    FontSize="Small"
+                                    Text="Descrição do Valor"/>
+                                <ccontrol:CustomEntry
+                                    Keyboard="Default"
+                                    Placeholder="Ex.: Por Noite"/>
+                            </StackLayout>
+                            <StackLayout>
+                                <Label
+                                    FontSize="Small"
+                                    Text="Classificação"/>
+                                <RelativeLayout HorizontalOptions="FillAndExpand">
+                                    <ccontrol:CustomPicker
+                                        RelativeLayout.WidthConstraint="{ConstraintExpression Type=RelativeToParent, Property=Width, Factor=1, Constant=0}"
+                                        Title = "Selecionar classificação"
+                                        HeightRequest="35"
+                                        HorizontalOptions="FillAndExpand"
+                                        x:Name="PickerStates"/>
+                                    <Label
+                                        RelativeLayout.WidthConstraint="{ConstraintExpression Type=RelativeToParent, Property=Width, Factor=1, Constant=0}"
+                                        Text="&#xf0c9;"
+                                        HorizontalOptions="End"
+                                        Margin="0,10,10,0"
+                                        InputTransparent="True">
+                                        <Label.FontFamily>
+                                            <OnPlatform
+                                                x:TypeArguments="x:String"
+                                                Android="fa-solid-900.ttf#Font Awesome 5 Free Solid" 
+                                                iOS="Font Awesome 5 Free"/>
+                                        </Label.FontFamily>
+                                    </Label>
+                                </RelativeLayout>
+                            </StackLayout>
+                            <StackLayout>
+                                <Label
+                                    FontSize="Small"
+                                    Text="Descrição"/>
+                                <ccontrol:CustomEditor
+                                    HeightRequest="150"
+                                    Keyboard="Default"
+                                    Placeholder="Digite uma descrição para oferta"/>
+                            </StackLayout>
+                        </StackLayout>
+                    </Frame>
+                    <Frame
+                        Margin="0,5,0,0"
+                        BorderColor="LightGray"
+                        HasShadow="False">
+                        <StackLayout Spacing="10">
+                            <Label
+                                Text="Número de hóspedes"
+                                TextColor="Accent"
+                                FontAttributes="Bold"/>
+                            <StackLayout Orientation="Horizontal">
+                                <Label
+                                    Text="Adulto"
+                                    HorizontalOptions="StartAndExpand"
+                                    VerticalOptions="Center"/>
+                                <ccontrol:CustomEntry
+                                    Text="0"
+                                    HorizontalOptions="End"
+                                    WidthRequest="40"
+                                    Keyboard="Numeric"/>
+                            </StackLayout>
+                            <StackLayout Orientation="Horizontal">
+                                <Label
+                                    Text="Criança"
+                                    HorizontalOptions="StartAndExpand"
+                                    VerticalOptions="Center"/>
+                                <ccontrol:CustomEntry
+                                    Text="0"
+                                    HorizontalOptions="End"
+                                    WidthRequest="40"
+                                    Keyboard="Numeric"/>
+                            </StackLayout>
+                        </StackLayout>
+                    </Frame>
+                    <Frame
+                        Margin="0,5,0,0"
+                        BorderColor="LightGray"
+                        HasShadow="False">
+                        <StackLayout Spacing="10">
+                            <Label
+                                Text="Tipos de cama"
+                                TextColor="Accent"
+                                FontAttributes="Bold"/>
+                            <StackLayout Orientation="Horizontal">
+                                <Label
+                                    Text="Solterio"
+                                    HorizontalOptions="StartAndExpand"
+                                    VerticalOptions="Center"/>
+                                <ccontrol:CustomEntry
+                                    Text="0"
+                                    HorizontalOptions="End"
+                                    WidthRequest="40"
+                                    Keyboard="Numeric"/>
+                            </StackLayout>
+                            <StackLayout Orientation="Horizontal">
+                                <Label
+                                    Text="Casal"
+                                    HorizontalOptions="StartAndExpand"
+                                    VerticalOptions="Center"/>
+                                <ccontrol:CustomEntry
+                                    Text="0"
+                                    HorizontalOptions="End"
+                                    WidthRequest="40"
+                                    Keyboard="Numeric"/>
+                            </StackLayout>
+                            <StackLayout Orientation="Horizontal">
+                                <Label
+                                    Text="Queen size"
+                                    HorizontalOptions="StartAndExpand"
+                                    VerticalOptions="Center"/>
+                                <ccontrol:CustomEntry
+                                    Text="0"
+                                    HorizontalOptions="End"
+                                    WidthRequest="40"
+                                    Keyboard="Numeric"/>
+                            </StackLayout>
+                            <StackLayout Orientation="Horizontal">
+                                <Label
+                                    Text="King size"
+                                    HorizontalOptions="StartAndExpand"
+                                    VerticalOptions="Center"/>
+                                <ccontrol:CustomEntry
+                                    Text="0"
+                                    HorizontalOptions="End"
+                                    WidthRequest="40"
+                                    Keyboard="Numeric"/>
+                            </StackLayout>
+                        </StackLayout>
+                    </Frame>
+                    <Frame
+                        Margin="0,5,0,0"
+                        BorderColor="LightGray"
+                        HasShadow="False">
+                        <StackLayout Spacing="10">
+                            <Label
+                                Text="Banheiros"
+                                TextColor="Accent"
+                                FontAttributes="Bold"/>
+                            <StackLayout Orientation="Horizontal">
+                                <Label
+                                    Text="Banheiro"
+                                    HorizontalOptions="StartAndExpand"
+                                    VerticalOptions="Center"/>
+                                <ccontrol:CustomEntry
+                                    Text="0"
+                                    HorizontalOptions="End"
+                                    WidthRequest="40"
+                                    Keyboard="Numeric"/>
+                            </StackLayout>
+                        </StackLayout>
+                    </Frame>
+                    <Frame
+                        Margin="0,5,0,0"
+                        BorderColor="LightGray"
+                        HasShadow="False">
+                        <StackLayout Spacing="10">
+                            <Label
+                                Text="Comodidades"
+                                TextColor="Accent"
+                                FontAttributes="Bold"/>
+                            <StackLayout Orientation="Horizontal">
+                                <Label
+                                    Text="Ar condicionado"
+                                    HorizontalOptions="StartAndExpand"
+                                    VerticalOptions="Center"/>
+                                <Switch HorizontalOptions="End" />
+                            </StackLayout>
+                            <StackLayout Orientation="Horizontal">
+                                <Label
+                                    Text="Área de estar"
+                                    HorizontalOptions="StartAndExpand"
+                                    VerticalOptions="Center"/>
+                                <Switch HorizontalOptions="End" />
+                            </StackLayout>
+                            <StackLayout Orientation="Horizontal">
+                                <Label
+                                    Text="Cofre"
+                                    HorizontalOptions="StartAndExpand"
+                                    VerticalOptions="Center"/>
+                                <Switch HorizontalOptions="End" />
+                            </StackLayout>
+                            <StackLayout Orientation="Horizontal">
+                                <Label
+                                    Text="Escritório"
+                                    HorizontalOptions="StartAndExpand"
+                                    VerticalOptions="Center"/>
+                                <Switch HorizontalOptions="End" />
+                            </StackLayout>
+                        </StackLayout>
+                    </Frame>
+                    <Button
+                        Margin="0,10,0,0"
+                        Text="Salvar"
+                        BackgroundColor="{StaticResource colorAccent}"
+                        TextColor="White"/>
+                </StackLayout>
+            </ScrollView>
+            <viewt:LoadingView
+		        IsVisible="{Binding IsBusy}"
+		        RelativeLayout.WidthConstraint="{ConstraintExpression Type=RelativeToParent, Property=Width, Factor=1, Constant=0}"
+		        RelativeLayout.HeightConstraint="{ConstraintExpression Type=RelativeToParent, Property=Height, Factor=1, Constant=0}"
+		        VerticalOptions="FillAndExpand"
+		        HorizontalOptions="FillAndExpand"/>
+        </RelativeLayout>
+    </ContentPage.Content>
+</ContentPage>

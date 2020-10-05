@@ -1,0 +1,43 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<ContentView
+    xmlns="http://xamarin.com/schemas/2014/forms" 
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:d="http://xamarin.com/schemas/2014/forms/design"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    mc:Ignorable="d"
+    x:Class="VisitNow.ViewTemplates.LoadingView">
+    <ContentView.Content>
+        <RelativeLayout>
+            <StackLayout
+                RelativeLayout.WidthConstraint="{ConstraintExpression Type=RelativeToParent, Property=Width, Factor=1, Constant=0}"
+                RelativeLayout.HeightConstraint="{ConstraintExpression Type=RelativeToParent, Property=Height, Factor=1, Constant=0}"
+                HorizontalOptions="FillAndExpand"
+                VerticalOptions="FillAndExpand"
+                BackgroundColor="Black"
+                Opacity="0.6">
+            </StackLayout>
+            <Frame
+                RelativeLayout.WidthConstraint="{ConstraintExpression Type=RelativeToParent, Property=Width, Factor=1, Constant=0}"
+                RelativeLayout.HeightConstraint="{ConstraintExpression Type=RelativeToParent, Property=Height, Factor=1, Constant=0}"
+                OutlineColor="{x:StaticResource colorPrimaryDark}"
+                BackgroundColor="{x:StaticResource colorSecondary}"
+                VerticalOptions="CenterAndExpand"
+                Margin="50"
+                CornerRadius="15">
+                <StackLayout Orientation="Vertical">
+                    <Image
+                        Margin="0,0,0,10"
+                        Source="little_logo_light.png"/>
+                    <Label
+                        Text="Processando..."
+                        TextColor="White"
+                        FontSize="Small"
+                        HorizontalTextAlignment="Center"/>
+                    <ActivityIndicator
+                        Color="White"
+                        IsRunning="True"/>
+                </StackLayout>
+            </Frame>
+        </RelativeLayout>
+    </ContentView.Content>
+</ContentView>

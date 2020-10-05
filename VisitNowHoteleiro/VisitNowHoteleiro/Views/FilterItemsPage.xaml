@@ -1,0 +1,182 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<ContentPage
+    xmlns="http://xamarin.com/schemas/2014/forms"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:d="http://xamarin.com/schemas/2014/forms/design"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    mc:Ignorable="d"
+    x:Class="VisitNowHoteleiro.Views.FilterItemsPage"
+    Title="Filtrar">
+    
+    <ContentPage.ToolbarItems>
+        <ToolbarItem Text="Limpar" Clicked="Cancel_Clicked" />
+        <ToolbarItem Text="Aplicar" Clicked="Save_Clicked" />
+    </ContentPage.ToolbarItems>
+    
+    <ContentPage.Content>
+        <ScrollView>
+            <StackLayout
+                Spacing="10"
+                Padding="10">
+                <Frame
+                    BorderColor="LightGray"
+                    HasShadow="False">
+                    <StackLayout Spacing="20">
+                        <StackLayout Orientation="Vertical">
+                            <Label
+                                Text="Administração"
+                                FontAttributes="Bold"
+                                FontSize="Default"
+                                TextColor="Accent"/>
+                            <StackLayout Orientation="Horizontal">
+                                <Switch IsToggled="True" />
+                                <Label
+                                    VerticalOptions="Center"
+                                    Text="Exibir Todas as Ofertas"
+                                    FontSize="Default"/>
+                            </StackLayout>
+                            <StackLayout Orientation="Horizontal">
+                                <Switch />
+                                <Label
+                                    VerticalOptions="Center"
+                                    Text="Exibir Ofertas Ativas"
+                                    FontSize="Default"/>
+                            </StackLayout>
+                            <StackLayout Orientation="Horizontal">
+                                <Switch />
+                                <Label
+                                    VerticalOptions="Center"
+                                    Text="Exibir Ofertas Inativas"
+                                    FontSize="Default"/>
+                            </StackLayout>
+                        </StackLayout>
+                    </StackLayout>
+                </Frame>
+                <Frame
+                    BorderColor="LightGray"
+                    HasShadow="False">
+                    <StackLayout Spacing="20">
+                        <StackLayout Orientation="Vertical">
+                            <Label
+                                Text="Políticas"
+                                FontAttributes="Bold"
+                                FontSize="Default"
+                                TextColor="Accent"/>
+                            <StackLayout Orientation="Horizontal">
+                                <Switch />
+                                <Label
+                                    VerticalOptions="Center"
+                                    Text="Aceita Cartão de Credito"
+                                    FontSize="Default"/>
+                            </StackLayout>
+                            <StackLayout Orientation="Horizontal">
+                                <Switch />
+                                <Label
+                                    VerticalOptions="Center"
+                                    Text="Aceita Cartão de Débito"
+                                    FontSize="Default"/>
+                            </StackLayout>
+                            <StackLayout Orientation="Horizontal">
+                                <Switch />
+                                <Label
+                                    VerticalOptions="Center"
+                                    Text="Aceita Cheque"
+                                    FontSize="Default"/>
+                            </StackLayout>
+                        </StackLayout>
+                    </StackLayout>
+                </Frame>
+                <Frame
+                    BorderColor="LightGray"
+                    HasShadow="False">
+                    <StackLayout Spacing="20">
+                        <StackLayout Orientation="Vertical">
+                            <Label
+                                Text="Comodidades em Geral"
+                                FontAttributes="Bold"
+                                FontSize="Default"
+                                TextColor="Accent"/>
+                            <StackLayout Orientation="Horizontal">
+                                <Switch />
+                                <Label
+                                    VerticalOptions="Center"
+                                    Text="Ar Condicionado"
+                                    FontSize="Default"/>
+                            </StackLayout>
+                            <StackLayout Orientation="Horizontal">
+                                <Switch />
+                                <Label
+                                    VerticalOptions="Center"
+                                    Text="Manobrista"
+                                    FontSize="Default"/>
+                            </StackLayout>
+                            <StackLayout Orientation="Horizontal">
+                                <Switch />
+                                <Label
+                                    VerticalOptions="Center"
+                                    Text="Sala de Jogos"
+                                    FontSize="Default"/>
+                            </StackLayout>
+                            <StackLayout Orientation="Horizontal">
+                                <Switch />
+                                <Label
+                                    VerticalOptions="Center"
+                                    Text="Spa"
+                                    FontSize="Default"/>
+                            </StackLayout>
+                        </StackLayout>
+                    </StackLayout>
+                </Frame>
+                <Frame
+                    BorderColor="LightGray"
+                    HasShadow="False">
+                    <StackLayout Spacing="20">
+                        <StackLayout Orientation="Vertical">
+                            <Label
+                                Text="Lazer e bem-estar"
+                                FontAttributes="Bold"
+                                FontSize="Default"
+                                TextColor="Accent"/>
+                            <StackLayout Orientation="Horizontal">
+                                <Switch />
+                                <Label
+                                    VerticalOptions="Center"
+                                    Text="Academia"
+                                    FontSize="Default"/>
+                            </StackLayout>
+                            <StackLayout Orientation="Horizontal">
+                                <Switch />
+                                <Label
+                                    VerticalOptions="Center"
+                                    Text="Jacuzzi"
+                                    FontSize="Default"/>
+                            </StackLayout>
+                            <StackLayout Orientation="Horizontal">
+                                <Switch />
+                                <Label
+                                    VerticalOptions="Center"
+                                    Text="Piscina"
+                                    FontSize="Default"/>
+                            </StackLayout>
+                            <StackLayout Orientation="Horizontal">
+                                <Switch />
+                                <Label
+                                    VerticalOptions="Center"
+                                    Text="Piscina Aquecida"
+                                    FontSize="Default"/>
+                            </StackLayout>
+                            <StackLayout Orientation="Horizontal">
+                                <Switch />
+                                <Label
+                                    VerticalOptions="Center"
+                                    Text="Sauna"
+                                    FontSize="Default"/>
+                            </StackLayout>
+                        </StackLayout>
+                    </StackLayout>
+                </Frame>
+            </StackLayout>
+        </ScrollView>
+    </ContentPage.Content>
+    
+</ContentPage>

@@ -1,0 +1,84 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<ContentView
+    xmlns="http://xamarin.com/schemas/2014/forms" 
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:d="http://xamarin.com/schemas/2014/forms/design"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    mc:Ignorable="d"
+    x:Class="VisitNow.ViewTemplates.StarsView"
+    x:Name="this">
+    <ContentView.Content>
+        
+        <StackLayout
+            BindingContext="{x:Reference this}"
+            Orientation="Horizontal"
+            VerticalOptions="FillAndExpand">
+            <Label
+                x:Name="Star1"
+                VerticalOptions="Center"
+                Text="&#xf005;"
+                FontSize="Small"
+                TextColor="LightGray">
+                <Label.FontFamily>
+                    <OnPlatform
+                        x:TypeArguments="x:String"
+                        Android="fa-solid-900.ttf#Font Awesome 5 Free Solid" 
+                        iOS="Font Awesome 5 Free"/>
+                </Label.FontFamily>
+            </Label>
+            <Label
+                x:Name="Star2"
+                VerticalOptions="Center"
+                Text="&#xf005;"
+                FontSize="Small"
+                TextColor="LightGray">
+                <Label.FontFamily>
+                    <OnPlatform
+                        x:TypeArguments="x:String"
+                        Android="fa-solid-900.ttf#Font Awesome 5 Free Solid" 
+                        iOS="Font Awesome 5 Free"/>
+                </Label.FontFamily>
+            </Label>
+            <Label
+                x:Name="Star3"
+                VerticalOptions="Center"
+                Text="&#xf005;"
+                FontSize="Small"
+                TextColor="LightGray">
+                <Label.FontFamily>
+                    <OnPlatform
+                        x:TypeArguments="x:String"
+                        Android="fa-solid-900.ttf#Font Awesome 5 Free Solid" 
+                        iOS="Font Awesome 5 Free"/>
+                </Label.FontFamily>
+            </Label>
+            <Label
+                x:Name="Star4"
+                VerticalOptions="Center"
+                Text="&#xf005;"
+                FontSize="Small"
+                TextColor="LightGray">
+                <Label.FontFamily>
+                    <OnPlatform
+                        x:TypeArguments="x:String"
+                        Android="fa-solid-900.ttf#Font Awesome 5 Free Solid" 
+                        iOS="Font Awesome 5 Free"/>
+                </Label.FontFamily>
+            </Label>
+            <Label
+                x:Name="Star5"
+                VerticalOptions="Center"
+                Text="&#xf005;"
+                FontSize="Small"
+                TextColor="LightGray">
+                <Label.FontFamily>
+                    <OnPlatform
+                        x:TypeArguments="x:String"
+                        Android="fa-solid-900.ttf#Font Awesome 5 Free Solid" 
+                        iOS="Font Awesome 5 Free"/>
+                </Label.FontFamily>
+            </Label>
+        </StackLayout>
+        
+    </ContentView.Content>
+</ContentView>

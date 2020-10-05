@@ -1,0 +1,212 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<TabbedPage
+    xmlns="http://xamarin.com/schemas/2014/forms"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:d="http://xamarin.com/schemas/2014/forms/design"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    mc:Ignorable="d"
+    x:Class="VisitNow.Views.ReservationsTabbedPage"
+    xmlns:viewt="clr-namespace:VisitNow.ViewTemplates"
+    Title="{Binding Title}">
+    <!--Pages can be added as references or inline-->
+    <ContentPage Title="Reservas">
+        <ListView
+            x:Name="ItemsListViewTab1"
+            ItemsSource="{Binding Items}"
+            VerticalOptions="FillAndExpand"
+            HasUnevenRows="true"
+            RefreshCommand="{Binding LoadItemsCommand}"
+            IsPullToRefreshEnabled="true"
+            IsRefreshing="{Binding IsBusy, Mode=OneWay}"
+            CachingStrategy="RecycleElement"
+            ItemSelected="OnItemSelected">
+            <ListView.ItemTemplate>
+                <DataTemplate>
+                    <ViewCell>
+                        <StackLayout Padding="10">
+                            <Grid VerticalOptions="FillAndExpand">
+                                <Grid.RowDefinitions>
+                                    <RowDefinition Height="Auto" />
+                                    <RowDefinition Height="Auto" />
+                                    <RowDefinition Height="Auto" />
+                                </Grid.RowDefinitions>
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="Auto" />
+                                    <ColumnDefinition Width="Auto" />
+                                    <ColumnDefinition Width="*" />
+                                    <ColumnDefinition Width="Auto" />
+                                </Grid.ColumnDefinitions>
+                                <Frame
+                                    Grid.Row="0"
+                                    Grid.Column="0"
+                                    Grid.RowSpan="3"
+                                    Padding="1"
+                                    BackgroundColor="SlateGray"
+                                    BorderColor="LightGray"
+                                    HasShadow="False"
+                                    WidthRequest="50">
+                                    <RelativeLayout>
+                                        <Image
+                                            RelativeLayout.WidthConstraint="{ConstraintExpression Type=RelativeToParent,Property=Width,Factor=1,Constant=0}"
+                                            RelativeLayout.HeightConstraint="{ConstraintExpression Type=RelativeToParent,Property=Height,Factor=1,Constant=0}"
+                                            Source="no_image"
+                                            Aspect="AspectFill"/>
+                                        <Image
+                                            RelativeLayout.WidthConstraint="{ConstraintExpression Type=RelativeToParent,Property=Width,Factor=1,Constant=0}"
+                                            RelativeLayout.HeightConstraint="{ConstraintExpression Type=RelativeToParent,Property=Height,Factor=1,Constant=0}"
+                                            Source="{Binding HomeImage}"
+                                            Aspect="AspectFill"/>
+                                    </RelativeLayout>
+                                </Frame>
+                                <Label
+                                    Grid.Row="0"
+                                    Grid.Column="1"
+                                    LineBreakMode="NoWrap"
+                                    Text="{Binding CheckIn, StringFormat='{0:dd/MM/yyyy}'}"
+                                    FontAttributes="Bold"
+                                    FontSize="Small"/>
+                                <viewt:StarsView
+                                    Grid.Row="0"
+                                    Grid.Column="3"
+                                    Rate="{Binding Rate}"
+                                    HorizontalOptions="EndAndExpand"/>
+                                <Label
+                                    Grid.Row="1"
+                                    Grid.Column="1"
+                                    Text="{Binding Location}" 
+                                    d:Text="{Binding .}"
+                                    LineBreakMode="NoWrap"
+                                    FontSize="Small" />
+                                <Label
+                                    Grid.Row="1"
+                                    Grid.Column="3"
+                                    HorizontalOptions="End"
+                                    LineBreakMode="NoWrap"
+                                    Text="{Binding Value}"
+                                    FontSize="Small"
+                                    FontAttributes="Bold"
+                                    TextColor="SteelBlue"/>
+                                <Label
+                                    Grid.Row="2"
+                                    Grid.Column="1"
+                                    Grid.ColumnSpan="3"
+                                    LineBreakMode="NoWrap"
+                                    Style="{DynamicResource ListItemTextStyle}">
+                                    <Label.FormattedText>
+                                        <FormattedString>
+                                            <FormattedString.Spans>
+                                                <Span Text="{Binding Name}" FontSize="Small" />
+                                                <Span Text=" - " FontSize="Small" />
+                                                <Span Text="{Binding Text}" FontSize="Micro" />
+                                            </FormattedString.Spans>
+                                        </FormattedString>
+                                    </Label.FormattedText>
+                                </Label>
+                            </Grid>
+                        </StackLayout>
+                    </ViewCell>
+                </DataTemplate>
+            </ListView.ItemTemplate>
+        </ListView>
+    </ContentPage>
+    <ContentPage Title="Histórico">
+        <ListView
+            x:Name="ItemsListViewTab2"
+            ItemsSource="{Binding Items}"
+            VerticalOptions="FillAndExpand"
+            HasUnevenRows="true"
+            RefreshCommand="{Binding LoadItemsCommand}"
+            IsPullToRefreshEnabled="true"
+            IsRefreshing="{Binding IsBusy, Mode=OneWay}"
+            CachingStrategy="RecycleElement"
+            ItemSelected="OnItemSelected">
+            <ListView.ItemTemplate>
+                <DataTemplate>
+                    <ViewCell>
+                        <StackLayout Padding="10">
+                            <Grid VerticalOptions="FillAndExpand">
+                                <Grid.RowDefinitions>
+                                    <RowDefinition Height="Auto" />
+                                    <RowDefinition Height="Auto" />
+                                    <RowDefinition Height="Auto" />
+                                </Grid.RowDefinitions>
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="Auto" />
+                                    <ColumnDefinition Width="Auto" />
+                                    <ColumnDefinition Width="*" />
+                                    <ColumnDefinition Width="Auto" />
+                                </Grid.ColumnDefinitions>
+                                <Frame
+                                    Grid.Row="0"
+                                    Grid.Column="0"
+                                    Grid.RowSpan="3"
+                                    Padding="1"
+                                    BackgroundColor="SlateGray"
+                                    BorderColor="LightGray"
+                                    HasShadow="False"
+                                    WidthRequest="50">
+                                    <RelativeLayout>
+                                        <Image
+                                            RelativeLayout.WidthConstraint="{ConstraintExpression Type=RelativeToParent,Property=Width,Factor=1,Constant=0}"
+                                            RelativeLayout.HeightConstraint="{ConstraintExpression Type=RelativeToParent,Property=Height,Factor=1,Constant=0}"
+                                            Source="no_image"
+                                            Aspect="AspectFill"/>
+                                        <Image
+                                            RelativeLayout.WidthConstraint="{ConstraintExpression Type=RelativeToParent,Property=Width,Factor=1,Constant=0}"
+                                            RelativeLayout.HeightConstraint="{ConstraintExpression Type=RelativeToParent,Property=Height,Factor=1,Constant=0}"
+                                            Source="{Binding HomeImage}"
+                                            Aspect="AspectFill"/>
+                                    </RelativeLayout>
+                                </Frame>
+                                <Label
+                                    Grid.Row="0"
+                                    Grid.Column="1"
+                                    LineBreakMode="NoWrap"
+                                    Text="{Binding CheckIn, StringFormat='{0:dd/MM/yyyy}'}"
+                                    FontAttributes="Bold"
+                                    FontSize="Small"/>
+                                <viewt:StarsView
+                                    Grid.Row="0"
+                                    Grid.Column="3"
+                                    Rate="{Binding Rate}"
+                                    HorizontalOptions="EndAndExpand"/>
+                                <Label
+                                    Grid.Row="1"
+                                    Grid.Column="1"
+                                    Text="{Binding Location}" 
+                                    d:Text="{Binding .}"
+                                    LineBreakMode="NoWrap"
+                                    FontSize="Small" />
+                                <Label
+                                    Grid.Row="1"
+                                    Grid.Column="3"
+                                    HorizontalOptions="End"
+                                    LineBreakMode="NoWrap"
+                                    Text="{Binding Value}"
+                                    FontSize="Small"
+                                    FontAttributes="Bold"
+                                    TextColor="SteelBlue"/>
+                                <Label
+                                    Grid.Row="2"
+                                    Grid.Column="1"
+                                    Grid.ColumnSpan="3"
+                                    LineBreakMode="NoWrap"
+                                    Style="{DynamicResource ListItemTextStyle}">
+                                    <Label.FormattedText>
+                                        <FormattedString>
+                                            <FormattedString.Spans>
+                                                <Span Text="{Binding Name}" FontSize="Small" />
+                                                <Span Text=" - " FontSize="Small" />
+                                                <Span Text="{Binding Text}" FontSize="Micro" />
+                                            </FormattedString.Spans>
+                                        </FormattedString>
+                                    </Label.FormattedText>
+                                </Label>
+                            </Grid>
+                        </StackLayout>
+                    </ViewCell>
+                </DataTemplate>
+            </ListView.ItemTemplate>
+        </ListView>
+    </ContentPage>
+</TabbedPage>

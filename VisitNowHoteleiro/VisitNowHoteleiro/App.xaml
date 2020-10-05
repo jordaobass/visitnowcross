@@ -1,0 +1,26 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<Application xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:d="http://xamarin.com/schemas/2014/forms/design"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             mc:Ignorable="d"
+             x:Class="VisitNowHoteleiro.App">
+
+    <Application.Resources>
+        <ResourceDictionary>
+            <!--Global Styles-->
+            <Color x:Key="background">#FFFFFF</Color>
+            <Color x:Key="backgroundDark">#000000</Color>
+            <Color x:Key="colorPrimary">#54367d</Color>
+            <Color x:Key="colorPrimaryDark">#2a1b3f</Color>
+            <Color x:Key="colorSecondary">#54367d</Color>
+            <Color x:Key="colorSecondaryDark">#2a1b3f</Color>
+            <Color x:Key="colorAccent">#e84578</Color>
+            <Style TargetType="NavigationPage">
+                <Setter Property="BarBackgroundColor" Value="{StaticResource colorPrimary}" />
+                <Setter Property="BarTextColor" Value="White" />
+            </Style>
+        </ResourceDictionary>
+    </Application.Resources>
+    
+</Application>

@@ -1,0 +1,72 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage
+    xmlns="http://xamarin.com/schemas/2014/forms"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:d="http://xamarin.com/schemas/2014/forms/design"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    mc:Ignorable="d"
+    x:Class="VisitNow.Views.MenuPage"
+    Title="Menu">
+
+    <StackLayout VerticalOptions="FillAndExpand">
+
+        <StackLayout
+            Orientation="Vertical"
+            HorizontalOptions="FillAndExpand"
+            VerticalOptions="Start"
+            HeightRequest="150"
+            Padding="25"
+            BackgroundColor="{StaticResource colorPrimary}">
+            <Label
+                Text=""
+                HorizontalOptions="Start"
+                VerticalOptions="EndAndExpand" />
+            <Image
+                Margin="0,10,0,0"
+                Source="logo.png"
+                HeightRequest="30"
+                HorizontalOptions="Start"
+                VerticalOptions="End" />
+        </StackLayout>
+        
+        <ListView
+            x:Name="ListViewMenu"
+            HasUnevenRows="True">
+            <d:ListView.ItemsSource>
+                <x:Array Type="{x:Type x:String}">
+                    <x:String>Item 1</x:String>
+                    <x:String>Item 2</x:String>
+                </x:Array>
+            </d:ListView.ItemsSource>
+            <ListView.ItemTemplate>
+                <DataTemplate>
+                    <ViewCell>
+                        <Grid Padding="10">
+                            <StackLayout Orientation="Horizontal">
+                                <StackLayout
+                                    VerticalOptions="FillAndExpand"
+                                    WidthRequest="50">
+                                    <Label
+                                        HorizontalOptions="Center"
+                                        VerticalOptions="CenterAndExpand"
+                                        Text="{Binding Icon}"
+                                        FontSize="Medium"
+                                        TextColor="{StaticResource colorSecondaryDark}">
+                                        <Label.FontFamily>
+                                            <OnPlatform
+                                                x:TypeArguments="x:String"
+                                                Android="fa-solid-900.ttf#Font Awesome 5 Free Solid" 
+                                                iOS="Font Awesome 5 Free"/>
+                                        </Label.FontFamily>
+                                    </Label>
+                                </StackLayout>
+                                <Label Text="{Binding Title}" d:Text="{Binding .}" FontSize="20" />
+                            </StackLayout>
+                        </Grid>
+                    </ViewCell>
+                </DataTemplate>
+            </ListView.ItemTemplate>
+        </ListView>
+    </StackLayout>
+
+</ContentPage>

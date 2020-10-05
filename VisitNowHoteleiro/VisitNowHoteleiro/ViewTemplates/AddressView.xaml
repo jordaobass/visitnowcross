@@ -1,0 +1,80 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<ContentView
+    xmlns="http://xamarin.com/schemas/2014/forms" 
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:d="http://xamarin.com/schemas/2014/forms/design"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    mc:Ignorable="d"
+    x:Class="VisitNowHoteleiro.ViewTemplates.AddressView"
+    xmlns:ccontrol="clr-namespace:VisitNowHoteleiro.CustomControl">
+    <ContentView.Content>
+        <StackLayout Spacing="10">
+            <StackLayout>
+                <Label
+                    FontSize="Small"
+                    Text="CEP"/>
+                <ccontrol:CustomEntry
+                    Keyboard="Numeric"
+                    Placeholder="Digite o CEP"/>
+            </StackLayout>
+            <StackLayout>
+                <Label
+                    FontSize="Small"
+                    Text="Endereço"/>
+                <ccontrol:CustomEntry Placeholder="Digite seu endereço"/>
+            </StackLayout>
+            <StackLayout Orientation="Horizontal">
+                <StackLayout>
+                    <Label
+                        FontSize="Small"
+                        Text="Número"/>
+                    <ccontrol:CustomEntry Placeholder="Digite o Nº"/>
+                </StackLayout>
+                <StackLayout HorizontalOptions="FillAndExpand">
+                    <Label
+                        FontSize="Small"
+                        Text="Complemento"/>
+                    <ccontrol:CustomEntry Placeholder="Digite o complemento"/>
+                </StackLayout>
+            </StackLayout>
+            <StackLayout>
+                <Label
+                    FontSize="Small"
+                    Text="Bairro"/>
+                <ccontrol:CustomEntry Placeholder="Digite o bairro"/>
+            </StackLayout>
+            <StackLayout>
+                <Label
+                    FontSize="Small"
+                    Text="Cidade"/>
+                <ccontrol:CustomEntry Placeholder="Digite a cidade"/>
+            </StackLayout>
+            <StackLayout>
+                <Label
+                    FontSize="Small"
+                    Text="Estado"/>
+                <RelativeLayout HorizontalOptions="FillAndExpand">
+                    <ccontrol:CustomPicker
+                        RelativeLayout.WidthConstraint="{ConstraintExpression Type=RelativeToParent, Property=Width, Factor=1, Constant=0}"
+                        Title = "Selecione o estado"
+                        HeightRequest="35"
+                        HorizontalOptions="FillAndExpand"
+                        x:Name="PickerStates"/>
+                    <Label
+                        RelativeLayout.WidthConstraint="{ConstraintExpression Type=RelativeToParent, Property=Width, Factor=1, Constant=0}"
+                        Text="&#xf0c9;"
+                        HorizontalOptions="End"
+                        Margin="0,10,10,0"
+                        InputTransparent="True">
+                        <Label.FontFamily>
+                            <OnPlatform
+                                x:TypeArguments="x:String"
+                                Android="fa-solid-900.ttf#Font Awesome 5 Free Solid" 
+                                iOS="Font Awesome 5 Free"/>
+                        </Label.FontFamily>
+                    </Label>
+                </RelativeLayout>
+            </StackLayout>
+        </StackLayout>
+    </ContentView.Content>
+</ContentView>

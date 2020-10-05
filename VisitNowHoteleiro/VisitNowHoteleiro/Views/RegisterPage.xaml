@@ -1,0 +1,123 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage
+    xmlns="http://xamarin.com/schemas/2014/forms"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:d="http://xamarin.com/schemas/2014/forms/design"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    mc:Ignorable="d"
+    x:Class="VisitNowHoteleiro.Views.RegisterPage"
+    xmlns:viewt="clr-namespace:VisitNowHoteleiro.ViewTemplates"
+    xmlns:ccontrol="clr-namespace:VisitNowHoteleiro.CustomControl"
+    Title="{Binding Title}">
+    <ContentPage.Content>
+        <RelativeLayout
+            VerticalOptions="FillAndExpand"
+            HorizontalOptions="FillAndExpand">
+        <ScrollView
+            RelativeLayout.WidthConstraint="{ConstraintExpression Type=RelativeToParent, Property=Width, Factor=1, Constant=0}"
+		    RelativeLayout.HeightConstraint="{ConstraintExpression Type=RelativeToParent, Property=Height, Factor=1, Constant=0}">
+            <StackLayout
+                Padding="10"
+                HorizontalOptions="FillAndExpand"
+                VerticalOptions="FillAndExpand">
+                <Frame
+                    BorderColor="LightGray"
+                    HasShadow="False">
+                    <StackLayout>
+                        <StackLayout
+                            Spacing="10"
+                            VerticalOptions="End">
+                            <StackLayout>
+                                <Label
+                                    FontSize="Small"
+                                    Text="Propriedade"/>
+                                <ccontrol:CustomEntry Placeholder="Digite o nome da propriedade"/>
+                            </StackLayout>
+                            <StackLayout>
+                                <Label
+                                    FontSize="Small"
+                                    Text="CNPJ"/>
+                                <ccontrol:CustomEntry Placeholder="Nº do CNPJ"/>
+                            </StackLayout>
+                            <Grid
+                                RowSpacing="10"
+                                ColumnSpacing="10">
+                                <Grid.RowDefinitions>
+                                    <RowDefinition Height="*" />
+                                </Grid.RowDefinitions>
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="*" />
+                                    <ColumnDefinition Width="*" />
+                                </Grid.ColumnDefinitions>
+                                <StackLayout
+                                    Grid.Row="0"
+                                    Grid.Column="0">
+                                    <Label
+                                        FontSize="Small"
+                                        Text="Telefone"/>
+                                    <ccontrol:CustomEntry Placeholder="Nº Telefone"/>
+                                </StackLayout>
+                                <StackLayout
+                                    Grid.Row="0"
+                                    Grid.Column="1">
+                                    <Label
+                                        FontSize="Small"
+                                        Text="Telefone Opcional"/>
+                                    <ccontrol:CustomEntry Placeholder="Nº Telefone"/>
+                                </StackLayout>
+                            </Grid>
+                            <StackLayout>
+                                <Label
+                                    FontSize="Small"
+                                    Text="E-mail"/>
+                                <ccontrol:CustomEntry Placeholder="Digite seu e-mail"/>
+                            </StackLayout>
+                            <StackLayout>
+                                <Label
+                                    FontSize="Small"
+                                    Text="Confirmar E-mail"/>
+                                <ccontrol:CustomEntry Placeholder="Digite novamente seu e-mail"/>
+                            </StackLayout>
+                            <viewt:AddressView/>
+                        </StackLayout>
+                        <StackLayout
+                            Margin="0,15,0,0"
+                            VerticalOptions="End">
+                            <Label
+                                FontSize="Small"
+                                TextColor="Blue"
+                                FontAttributes="Bold"
+                                Text="Termos de uso e Políticas de Privacidade">
+                                <Label.GestureRecognizers>
+                                    <TapGestureRecognizer
+                                        Command="{Binding PrivacyPolicyCommand}"
+                                        NumberOfTapsRequired="1"/>
+                                </Label.GestureRecognizers>
+                            </Label>
+                                <StackLayout Orientation="Horizontal">
+                                <Label
+                                    HorizontalOptions="StartAndExpand"
+                                    FontSize="Small"
+                                    Text="Declaro que li, compreendi e aceitei os Termos de uso e Política de Privacidade."/>
+                                <Switch HorizontalOptions="End"/>
+                            </StackLayout>
+                        </StackLayout>
+                    </StackLayout>
+                </Frame>
+                <Button
+                    Margin="0,10,0,0"
+                    VerticalOptions="End"
+                    Text="Criar conta"
+                    TextColor="White"
+                    BackgroundColor="{StaticResource colorAccent}"/>
+            </StackLayout>
+        </ScrollView>
+        <viewt:LoadingView
+		    IsVisible="{Binding IsBusy}"
+		    RelativeLayout.WidthConstraint="{ConstraintExpression Type=RelativeToParent, Property=Width, Factor=1, Constant=0}"
+		    RelativeLayout.HeightConstraint="{ConstraintExpression Type=RelativeToParent, Property=Height, Factor=1, Constant=0}"
+		    VerticalOptions="FillAndExpand"
+		    HorizontalOptions="FillAndExpand"/>
+        </RelativeLayout>
+    </ContentPage.Content>
+</ContentPage>

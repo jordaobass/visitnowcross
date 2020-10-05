@@ -1,0 +1,219 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage
+    xmlns="http://xamarin.com/schemas/2014/forms"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:d="http://xamarin.com/schemas/2014/forms/design"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    mc:Ignorable="d"
+    x:Class="VisitNow.Views.ItemsPage"
+    Title="{Binding Title}"
+    x:Name="BrowseItemsPage"
+    xmlns:viewt="clr-namespace:VisitNow.ViewTemplates">
+
+    <!--<ContentPage.ToolbarItems>
+        <ToolbarItem Text="Add" Clicked="AddItem_Clicked" />
+    </ContentPage.ToolbarItems>-->
+
+    <NavigationPage.TitleView>
+        <StackLayout Orientation="Horizontal">
+            <Label
+                VerticalOptions="Center"
+                Text="{Binding Title}"
+                TextColor="White"
+                FontAttributes="Bold"
+                FontSize="Medium" />
+            <Button
+                WidthRequest="45"
+                HorizontalOptions="EndAndExpand"
+                Text="&#xf002;"
+                FontSize="Medium"
+                BackgroundColor="Transparent"
+                TextColor="White"
+                Clicked="SearchItems_Clicked">
+                <Button.FontFamily>
+                    <OnPlatform
+                        x:TypeArguments="x:String"
+                        Android="fa-solid-900.ttf#Font Awesome 5 Free Solid" 
+                        iOS="Font Awesome 5 Free"/>
+                </Button.FontFamily>
+            </Button>
+            <Button
+                WidthRequest="45"
+                HorizontalOptions="End"
+                Text="&#xf0b0;"
+                FontSize="Medium"
+                BackgroundColor="Transparent"
+                TextColor="White"
+                Clicked="FilterItems_Clicked">
+                <Button.FontFamily>
+                    <OnPlatform
+                        x:TypeArguments="x:String"
+                        Android="fa-solid-900.ttf#Font Awesome 5 Free Solid" 
+                        iOS="Font Awesome 5 Free"/>
+                </Button.FontFamily>
+            </Button>
+        </StackLayout>
+    </NavigationPage.TitleView>
+
+    <RelativeLayout
+        VerticalOptions="FillAndExpand"
+        HorizontalOptions="FillAndExpand">
+        <StackLayout
+            RelativeLayout.WidthConstraint="{ConstraintExpression Type=RelativeToParent, Property=Width, Factor=1, Constant=0}"
+		    RelativeLayout.HeightConstraint="{ConstraintExpression Type=RelativeToParent, Property=Height, Factor=1, Constant=0}">
+            <ListView
+                x:Name="ItemsListView"
+                ItemsSource="{Binding Items}"
+                VerticalOptions="FillAndExpand"
+                HasUnevenRows="true"
+                RefreshCommand="{Binding LoadItemsCommand}"
+                IsPullToRefreshEnabled="true"
+                IsRefreshing="{Binding IsBusy, Mode=OneWay}"
+                CachingStrategy="RecycleElement"
+                ItemSelected="OnItemSelected">
+                <ListView.ItemTemplate>
+                    <DataTemplate>
+                        <ViewCell>
+                            <StackLayout Padding="10">
+                                <Frame
+                                    Padding="1"
+                                    BackgroundColor="SlateGray"
+                                    BorderColor="LightGray"
+                                    HasShadow="False"
+                                    HeightRequest="150">
+                                    <RelativeLayout>
+                                        <Image
+                                            RelativeLayout.WidthConstraint="{ConstraintExpression Type=RelativeToParent,Property=Width,Factor=1,Constant=0}"
+                                            RelativeLayout.HeightConstraint="{ConstraintExpression Type=RelativeToParent,Property=Height,Factor=1,Constant=0}"
+                                            Source="no_image"
+                                            Aspect="AspectFill"/>
+                                        <Image
+                                            RelativeLayout.WidthConstraint="{ConstraintExpression Type=RelativeToParent,Property=Width,Factor=1,Constant=0}"
+                                            RelativeLayout.HeightConstraint="{ConstraintExpression Type=RelativeToParent,Property=Height,Factor=1,Constant=0}"
+                                            Source="{Binding HomeImage}"
+                                            Aspect="AspectFill"/>
+                                    </RelativeLayout>
+                                </Frame>
+                                <Grid VerticalOptions="FillAndExpand">
+                                    <Grid.RowDefinitions>
+                                        <RowDefinition Height="Auto" />
+                                        <RowDefinition Height="Auto" />
+                                        <RowDefinition Height="Auto" />
+                                    </Grid.RowDefinitions>
+                                    <Grid.ColumnDefinitions>
+                                        <ColumnDefinition Width="Auto" />
+                                        <ColumnDefinition Width="*" />
+                                        <ColumnDefinition Width="Auto" />
+                                    </Grid.ColumnDefinitions>
+                                    <Label
+                                        Grid.Row="0"
+                                        Grid.Column="0"
+                                        Grid.ColumnSpan="2"
+                                        LineBreakMode="NoWrap"
+                                        Style="{DynamicResource ListItemTextStyle}">
+                                        <Label.FormattedText>
+                                            <FormattedString>
+                                                <FormattedString.Spans>
+                                                    <Span Text="{Binding Value}" FontSize="Medium" FontAttributes="Bold" TextColor="SteelBlue" />
+                                                    <Span Text=" / " />
+                                                    <Span Text="{Binding ValueDescription}" FontSize="Small"/>
+                                                </FormattedString.Spans>
+                                            </FormattedString>
+                                        </Label.FormattedText>
+                                    </Label>
+                                    <Frame
+                                        Grid.Row="0"
+                                        Grid.Column="2"
+                                        IsVisible="{Binding Discount}"
+                                        CornerRadius="5"
+                                        BackgroundColor="Accent"
+                                        Padding="8,2,8,2"
+                                        HorizontalOptions="EndAndExpand">
+                                        <Label
+                                            LineBreakMode="NoWrap" 
+                                            Style="{DynamicResource ListItemTextStyle}" 
+                                            FontSize="Small"
+                                            TextColor="White"
+                                            FontAttributes="Bold">
+                                            <Label.FormattedText>
+                                                <FormattedString>
+                                                    <FormattedString.Spans>
+                                                        <Span Text="{Binding DiscountValue}" />
+                                                        <Span Text="% OFF" />
+                                                    </FormattedString.Spans>
+                                                </FormattedString>
+                                            </Label.FormattedText>
+                                        </Label>
+                                    </Frame>
+                                    <Label
+                                        Grid.Row="1"
+                                        Grid.Column="0"
+                                        Grid.ColumnSpan="2"
+                                        Text="{Binding Text}" 
+                                        d:Text="{Binding .}"
+                                        LineBreakMode="NoWrap" 
+                                        Style="{DynamicResource ListItemTextStyle}" 
+                                        FontSize="Small" />
+                                    <StackLayout
+                                        Grid.Row="1"
+                                        Grid.Column="2"
+                                        Orientation="Horizontal"
+                                        HorizontalOptions="End">
+                                        <Label
+                                            HorizontalOptions="End"
+                                            LineBreakMode="NoWrap" 
+                                            FontSize="Small">
+                                            <Label.FormattedText>
+                                                <FormattedString>
+                                                    <FormattedString.Spans>
+                                                        <Span Text="{Binding UserRate}" />
+                                                        <Span Text="%" />
+                                                    </FormattedString.Spans>
+                                                </FormattedString>
+                                            </Label.FormattedText>
+                                        </Label>
+                                        <Label
+                                            HorizontalOptions="End"
+                                            VerticalOptions="Center"
+                                            Text="&#xf164;"
+                                            FontSize="Medium"
+                                            TextColor="SteelBlue">
+                                            <Label.FontFamily>
+                                                <OnPlatform
+                                                    x:TypeArguments="x:String"
+                                                    Android="fa-solid-900.ttf#Font Awesome 5 Free Solid" 
+                                                    iOS="Font Awesome 5 Free"/>
+                                            </Label.FontFamily>
+                                        </Label>
+                                    </StackLayout>
+                                    <Label
+                                        Grid.Row="2"
+                                        Grid.Column="0"
+                                        Text="{Binding Location}" 
+                                        d:Text="{Binding .}"
+                                        LineBreakMode="NoWrap" 
+                                        Style="{DynamicResource ListItemTextStyle}" 
+                                        FontSize="Small" />
+                                    <viewt:StarsView
+                                        Grid.Row="2"
+                                        Grid.Column="2"
+                                        Rate="{Binding Rate}"
+                                        HorizontalOptions="EndAndExpand"/>
+                                </Grid>
+                            </StackLayout>
+                        </ViewCell>
+                    </DataTemplate>
+                </ListView.ItemTemplate>
+            </ListView>
+        </StackLayout>
+        <!-- <viewt:LoadingView
+		    IsVisible="{Binding IsBusy}" -->
+        <viewt:LoadingView
+		    IsVisible="False"
+		    RelativeLayout.WidthConstraint="{ConstraintExpression Type=RelativeToParent, Property=Width, Factor=1, Constant=0}"
+		    RelativeLayout.HeightConstraint="{ConstraintExpression Type=RelativeToParent, Property=Height, Factor=1, Constant=0}"
+		    VerticalOptions="FillAndExpand"
+		    HorizontalOptions="FillAndExpand"/>
+    </RelativeLayout>
+
+</ContentPage>
